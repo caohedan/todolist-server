@@ -1,0 +1,24 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.2.RELEASE'
+    id 'java'
+}
+jar {
+    baseName = 'server'
+    version = '1.0'
+}
+repositories {
+//使用淘宝的maven镜像
+    maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
+}
+dependencies {
+    compile project(':web')//server模块依赖web模块
+    compile 'org.springframework.boot:spring-boot-configuration-processor'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile ("mysql:mysql-connector-java:5.1.24")
+    compile("org.springframework.boot:spring-boot-devtools")
+
+    compileOnly 'org.projectlombok:lombok'
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+}
